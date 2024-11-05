@@ -62,14 +62,14 @@ GROUP BY Good_or_Bad_loan;
 -- Good -> 435.79M
 -- Bad -> 37.28
 
-
-
 -- 2.4 What is the trend in the repayment behavior over time for good vs. bad loans?
-
-
-
-
-
+SELECT 
+    DATE_FORMAT(issue_date, '%Y-%m') AS month,
+    SUM(CASE WHEN loan_status IN ('Fully Paid', 'Current') THEN 1 ELSE 0 END) AS good_loans,
+    SUM(CASE WHEN loan_status IN ('Charged Off', 'Default') THEN 1 ELSE 0 END) AS bad_loans
+FROM bank_data
+GROUP BY month
+ORDER BY month;
 
 
 
