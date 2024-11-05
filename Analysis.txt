@@ -1,0 +1,57 @@
+General Loan Insights:
+
+How many loan applications have been submitted overall?
+What is the total funded amount and the total amount received by the bank?
+What is the average interest rate and debt-to-income (DTI) ratio of all loan applications?
+
+
+Good vs. Bad Loans:
+
+What percentage of loan applications are considered good (paid on time or fully paid off)?
+What percentage of loan applications are considered bad (borrowers who failed to repay)?
+What is the total amount received from good loans compared to bad loans?
+What is the trend in the repayment behavior over time for good vs. bad loans?
+
+Regional Analysis:
+What are the total loan amounts disbursed in each state?
+Which state has the highest number of loan applications?
+How do the rates of good and bad loans compare by state?
+
+Monthly and Long-Term Analysis:
+What is the monthly trend in the number of loan applications submitted?
+How much money has been lent and received by the bank each month?
+How does the distribution of loan terms (e.g., 36-month vs. 60-month) impact repayment success?
+
+Purpose-Based Analysis:
+What are the most common purposes for which loans are taken?
+How does the loan repayment success rate vary by purpose?
+Which loan purposes contribute the most to bad loans?
+Home Ownership Analysis:
+
+How does home ownership status impact the likelihood of timely payments?
+What percentage of loan applicants are homeowners, renters, or have a mortgage?
+How do the average loan amounts and repayment success differ by home ownership status?
+Loan Status Breakdown:
+
+How many loans have been paid off, are pending, or have been charged off?
+What are the repayment trends over the past year(s)?
+What is the proportion of late payments for different loan statuses?
+Annual Income vs. Loan Amount:
+
+What is the correlation between annual income and the average loan amount taken?
+How many borrowers have taken loans higher than a set multiple of their annual income?
+How does income level impact loan repayment success (good vs. bad loans)?
+Employment Analysis:
+
+What is the distribution of loan amounts by employment length?
+How does the repayment success rate vary by different job titles or employment lengths?
+What job sectors are most associated with good or bad loans?
+Interest Rate and Installment Analysis:
+
+What is the average interest rate and how does it differ by grade or sub-grade?
+What is the average installment amount, and how does it relate to loan repayment status?
+What is the distribution of interest rates for good vs. bad loans?
+Verification Status Insights:
+
+How does the verification status of applications impact loan repayment success?
+What is the average loan amount and interest rate for verified vs. non-verified applications?
