@@ -18,6 +18,69 @@ SELECT sum(total_payment)/1000000 as total_payment_recieved_in_millions
 FROM bank_data; 
 -- 473 million
 
+-- 1.4 What is the average interest rate and debt-to-income (DTI) ratio of all loan applications?
+SELECT ROUND(AVG(int_rate),3)*100 as Avg_interest_rate, ROUND(AVG(dti),3)*100 as Avg_debt_to_income
+FROM
+bank_data;
+-- Average Interest rate = 12%
+-- Average DTI = 13.3%
+
+-- 2. Good vs. Bad Loans:
+-- 2.1 What percentage of loan applications are considered good (paid on time or fully paid off)?
+SELECT DISTINCT loan_status FROM bank_data;
+
+SELECT COUNT(*) as Total_app,
+COUNT(CASE WHEN loan_status in ('Fully Paid', 'Current') THEN 'Good Loan'
+    END) as No_good_loans,
+COUNT(CASE WHEN loan_status in ('Fully Paid', 'Current') THEN 'Good Loan'
+    END)*100/COUNT(*) AS percentage_of_good_loan
+FROM 
+bank_data;
+-- 86.1753% good loans out of 38576 i.e. 335243
+
+-- 2.2 What percentage of loan applications are considered bad (borrowers who failed to repay)?
+SELECT COUNT(*) as Total_app,
+COUNT(CASE WHEN loan_status not in ('Fully Paid', 'Current') THEN 'Bad Loan'
+    END) as No_good_loans,
+COUNT(CASE WHEN loan_status not in ('Fully Paid', 'Current') THEN 'Bad Loan'
+    END)*100/COUNT(*) AS percentage_of_good_loan
+FROM 
+bank_data;
+-- 5333 i.e. 13.824% Bad Loans
+
+-- 2.3 What is the total amount received from good loans compared to bad loans?
+WITH good_bad_loan AS(
+SELECT CASE WHEN loan_status in ('Fully Paid', 'Current') THEN 'Good Loan'
+	ELSE 'Bad Loan'
+    END AS Good_or_Bad_loan,
+    total_payment
+	FROM bank_data)
+SELECT 
+Good_or_Bad_loan, ROUND(SUM(total_payment)/1000000,2) AS total_payment_millions
+FROM good_bad_loan
+GROUP BY Good_or_Bad_loan;
+-- Good -> 435.79M
+-- Bad -> 37.28
+
+
+
+-- 2.4 What is the trend in the repayment behavior over time for good vs. bad loans?
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- ---------------------------------------------------------
+
+
 SELECT DISTINCT purpose from bank_data;
 
 UPDATE `bank_data`
