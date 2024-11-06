@@ -97,6 +97,14 @@ ROUND((Good_loan/(Good_loan+Bad_loan))*100,2) AS Good_loan_percentage,
 ROUND((Bad_loan/(Good_loan+Bad_loan))*100,2) AS Bad_loan_percentage
 FROM good_bad_loan;
 
+-- 4. Monthly and Long-Term Analysis:
+-- Transforming issue_date column from text format to date
+UPDATE bank_data
+SET issue_date = STR_TO_DATE(`issue_date`, '%d-%m-%Y')
+WHERE issue_date IS NOT NULL;
+ALTER TABLE bank_data
+CHANGE COLUMN issue_date issue_date DATE NULL;
+
 
 
 
@@ -114,12 +122,7 @@ FROM good_bad_loan;
 
 SELECT DISTINCT purpose from bank_data;
 
-UPDATE `bank_data`
-SET `issue_date` = STR_TO_DATE(`issue_date`, '%d-%m-%Y')
-WHERE `issue_date` IS NOT NULL;
 
-ALTER TABLE `bank_data` 
-CHANGE COLUMN `issue_date` `issue_date` DATE NULL;
 
 
 -- Avg interest rate for each type of loan
