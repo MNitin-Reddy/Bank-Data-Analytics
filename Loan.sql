@@ -105,6 +105,21 @@ WHERE issue_date IS NOT NULL;
 ALTER TABLE bank_data
 CHANGE COLUMN issue_date issue_date DATE NULL;
 
+-- 4.1 What is the monthly trend in the number of loan applications submitted?
+SELECT MONTH(issue_date) as month, COUNT(id) as no_of_applications
+FROM bank_data
+GROUP BY MONTH(issue_date)
+ORDER BY month;
+-- increasing in application trend over the months
+
+-- 4.2 How much money has been lent and received by the bank each month (net interest income)?
+SELECT MONTH(issue_date) as month, 
+	ROUND((SUM(total_payment) - SUM(loan_amount))/1000000,2) as net_interest_income_millions
+FROM bank_data
+GROUP BY MONTH(issue_date)
+ORDER BY month;
+
+
 
 
 
