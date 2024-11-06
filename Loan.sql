@@ -119,6 +119,40 @@ FROM bank_data
 GROUP BY MONTH(issue_date)
 ORDER BY month;
 
+-- 5. Purpose-Based Analysis
+-- 5.1 What are the most common purposes for which loans are taken?
+SELECT DISTINCT purpose, ROUND((COUNT(id)/(SELECT COUNT(*) FROM bank_data))*100,2) as percentage_of_applications
+FROM bank_data
+GROUP BY purpose
+ORDER BY percentage_of_applications DESC;
+
+-- 5.2 How does the loan repayment success rate vary by purpose?
+SELECT 
+    purpose,
+    COUNT(CASE WHEN loan_status IN ('Fully Paid', 'Current') THEN 1 END) AS good_loans,
+    COUNT(CASE WHEN loan_status IN ('Charged Off', 'Default') THEN 1 END) AS bad_loans,
+    COUNT(*) AS total_loans,
+    ROUND(
+        (COUNT(CASE WHEN loan_status IN ('Fully Paid', 'Current') THEN 1 END) / COUNT(*)) * 100, 
+        2
+    ) AS success_rate_percentage
+FROM bank_data
+GROUP BY purpose
+ORDER BY success_rate_percentage DESC;
+
+-- 5.3 Which loan purposes contribute the most to bad loans?
+SELECT DISTINCT purpose,
+ROUND( (SUM(
+		CASE 
+			WHEN loan_status = 'Charged Off' THEN 1 ELSE 0 END) 
+            OVER (PARTITION BY purpose) / (SELECT COUNT(*) FROM bank_data WHERE loan_status = 'Charged Off')) *100,2)
+as percentage_of_bad_loans
+FROM bank_data
+ORDER BY percentage_of_bad_loans DESC;
+
+
+
+
 
 
 
