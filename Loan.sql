@@ -60,7 +60,7 @@ Good_or_Bad_loan, ROUND(SUM(total_payment)/1000000,2) AS total_payment_millions
 FROM good_bad_loan
 GROUP BY Good_or_Bad_loan;
 -- Good -> 435.79M
--- Bad -> 37.28
+-- Bad -> 37.28M
 
 -- 2.4 What is the trend in the repayment behavior over time for good vs. bad loans?
 SELECT 
@@ -70,6 +70,37 @@ SELECT
 FROM bank_data
 GROUP BY month
 ORDER BY month;
+
+-- 3. Regional Analysis
+-- 3.1 What are the total loan amounts disbursed in each state?
+SELECT address_state, ROUND(SUM(loan_amount)/1000000,2) as amount_disbursed
+FROM bank_data
+GROUP BY address_state
+ORDER BY amount_disbursed DESC;
+
+-- 3.2 Which state has the highest number of loan applications?
+SELECT address_state , COUNT(*) as no_of_loan_applications
+FROM bank_data
+GROUP BY address_state
+ORDER BY no_of_loan_applications DESC; 
+
+-- 3.3 How do the rates of good and bad loans compare by state?
+WITH good_bad_loan AS(
+SELECT address_state,
+SUM(CASE WHEN loan_status in ('Fully Paid', 'Current') THEN 1 ELSE 0 END) AS Good_loan,
+SUM(CASE WHEN loan_status = 'Charged Off' THEN 1 ELSE 0 END) AS Bad_loan
+FROM bank_data
+GROUP BY address_state)
+SELECT 
+address_state,
+ROUND((Good_loan/(Good_loan+Bad_loan))*100,2) AS Good_loan_percentage,
+ROUND((Bad_loan/(Good_loan+Bad_loan))*100,2) AS Bad_loan_percentage
+FROM good_bad_loan;
+
+
+
+
+
 
 
 
@@ -128,24 +159,6 @@ FROM bank_data;
 SELECT ROUND(SUM(total_payment)/1000000,2) as total_amount_received_in_millions
 FROM bank_data
 WHERE loan_status in ('Fully paid', 'Current');
-
---
--- Step 1: Add a new DATE column
-ALTER TABLE bank_data DROP issue_date_new;
-
--- Step 2: Populate the new column by converting the old column format to DATE
-UPDATE bank_data
-SET issue_date_new = STR_TO_DATE(issue_date, '%d-%m-%Y')
-WHERE 1;
-
--- Step 3: (Optional) Drop the old column
-ALTER TABLE bank_data DROP COLUMN issue_date;
-
--- Step 4: Rename the new column to the original name
-ALTER TABLE bank_data CHANGE issue_date_new issue_date DATE;
-
-
-
 -- -------------
 
 -- Month to Month total amount recieved
