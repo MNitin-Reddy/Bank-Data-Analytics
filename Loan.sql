@@ -162,10 +162,27 @@ GROUP BY home_ownership
 ORDER BY Timely_payment_percentage DESC;
 -- Not a significant impact on loan repayment
 
+-- 6.2 What percentage of loan applicants are homeowners, renters, or have a mortgage?
+SELECT b.home_ownership, b.total_loans, b.total_loans*100 / a.overall_loans as percentage_of_loans
+FROM
+(SELECT COUNT(*)  as overall_loans
+FROM bank_data) AS a
+CROSS JOIN
+(SELECT home_ownership, COUNT(*) as total_loans
+FROM bank_data
+GROUP BY home_ownership) AS b;
+
+-- 6.3 How do the average loan amounts and repayment success differ by home ownership status?
+SELECT home_ownership, 
+ROUND(AVG(loan_amount)/1000,2) as avg_loan_amount_in_k$,
+ROUND(COUNT(CASE WHEN loan_status = 'Fully Paid' OR loan_status = 'Current' THEN 1 END) * 100.0 / COUNT(*),2) AS repayment_success_rate
+FROM bank_data
+GROUP BY home_ownership
+ORDER BY repayment_success_rate DESC;
 
 
-
-
+SELECT DISTINCT home_ownership, COUNT(*) OVER ()  as overall_loans
+FROM bank_data;
 
 
 
