@@ -26,6 +26,8 @@ Purpose-Based Analysis:
 What are the most common purposes for which loans are taken?
 How does the loan repayment success rate vary by purpose?
 Which loan purposes contribute the most to bad loans?
+
+
 Home Ownership Analysis:
 
 How does home ownership status impact the likelihood of timely payments?
