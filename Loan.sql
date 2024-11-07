@@ -150,10 +150,17 @@ as percentage_of_bad_loans
 FROM bank_data
 ORDER BY percentage_of_bad_loans DESC;
 
-
-
-
-
+-- 6. Home Ownership Analysis
+-- 6.1 How does home ownership status impact the likelihood of timely payments?
+SELECT home_ownership,
+SUM(CASE WHEN loan_status IN ('Fully paid','Current') THEN 1 ELSE 0 END) as No_of_good_loans,
+SUM(CASE WHEN loan_status = 'Charged Off' THEN 1 ELSE 0 END) as No_of_bad_loans,
+COUNT(*) as Total_loans,
+ROUND( SUM(CASE WHEN loan_status IN ('Fully paid','Current') THEN 1 ELSE 0 END)*100 / COUNT(*) ,2) as Timely_payment_percentage
+FROM bank_data
+GROUP BY home_ownership
+ORDER BY Timely_payment_percentage DESC;
+-- Not a significant impact on loan repayment
 
 
 

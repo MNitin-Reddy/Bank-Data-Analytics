@@ -157,24 +157,3 @@ ORDER BY percentage_of_bad_loans DESC;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
--- ---------------------------------------------------------
-
-
-SELECT DISTINCT purpose from bank_data;
-
-
-
-
