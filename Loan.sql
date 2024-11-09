@@ -182,6 +182,14 @@ ORDER BY repayment_success_rate DESC;
 
 
 
+-- 7. Loan Status Breakdown:
 
+-- 7.1 How many loans have been paid off, are pending, or have been charged off?
+SELECT DISTINCT loan_status , COUNT(*) OVER (PARTITION BY loan_status) as no_of_applications
+FROM bank_data
+ORDER BY no_of_applications DESC;
+
+-- 7.2 What are the repayment trends over the past year(s)?
+-- 7.3 What is the proportion of late payments for different loan statuses?
 
 

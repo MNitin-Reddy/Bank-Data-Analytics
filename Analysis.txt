@@ -33,6 +33,7 @@ Home Ownership Analysis:
 How does home ownership status impact the likelihood of timely payments?
 What percentage of loan applicants are homeowners, renters, or have a mortgage?
 How do the average loan amounts and repayment success differ by home ownership status?
+
 Loan Status Breakdown:
 
 How many loans have been paid off, are pending, or have been charged off?
