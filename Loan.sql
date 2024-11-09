@@ -190,6 +190,13 @@ FROM bank_data
 ORDER BY no_of_applications DESC;
 
 -- 7.2 What are the repayment trends over the past year(s)?
--- 7.3 What is the proportion of late payments for different loan statuses?
+SELECT 
+    YEAR(last_payment_date) AS year,
+    COUNT(CASE WHEN loan_status = 'Fully Paid' THEN 1 END) * 100.0 / COUNT(*) AS repayment_success_rate,
+    SUM(total_payment) AS total_repayment_amount
+FROM bank_data
+WHERE  last_payment_date IS NOT NULL 
+GROUP BY YEAR(last_payment_date)
+ORDER BY year;
 
 
