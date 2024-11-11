@@ -251,3 +251,21 @@ ORDER BY income_level;
 -- Mid-range income borrowers fall between these extremes. 
 -- This trend suggests that higher-income borrowers are more financially capable of timely repayments, while lower-income borrowers may benefit from flexible repayment options to improve loan outcomes.
 
+-- 9. Employment Analysis
+-- 9.1 What is the distribution of loan amounts by employment length?
+SELECT emp_length, AVG(loan_amount) as avg_loan_amount
+FROM bank_data
+GROUP BY emp_length
+ORDER BY emp_length;
+-- There seems to be a positive correlation between emp_length and avgerage loan_amount taken
+
+-- 9.2 How does the repayment success rate vary by different employment lengths?
+SELECT
+emp_length, 
+ROUND(COUNT(CASE WHEN loan_status IN ('Fully Paid', 'Current') THEN 1 END) * 100.0 / COUNT(*) , 2) AS good_loan_percentage,
+ROUND(COUNT(CASE WHEN loan_status IN ('Charged Off', 'Defaulted') THEN 1 END) * 100.0 / COUNT(*), 2) AS bad_loan_percentage
+from bank_data
+GROUP BY emp_length
+ORDER BY emp_length;
+-- Similar trend for all the employment lenght ranges
+
