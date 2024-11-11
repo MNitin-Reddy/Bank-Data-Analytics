@@ -267,5 +267,49 @@ ROUND(COUNT(CASE WHEN loan_status IN ('Charged Off', 'Defaulted') THEN 1 END) * 
 from bank_data
 GROUP BY emp_length
 ORDER BY emp_length;
--- Similar trend for all the employment lenght ranges
+-- Similar trend for all the employment length ranges
+
+-- 10. Interest Rate and Installment Analysis
+-- 10.1 What is the average interest rate and how does it differ by grade?
+SELECT grade, ROUND( AVG(int_rate)*100, 2) as avg_interest_rate  FROM bank_data
+GROUP BY grade
+ORDER BY grade;
+-- Grade G has the highest interest rate of 21% and with lowest if 7.3%
+-- As the grade goes from A to G the interest rate increases by 2% through each level
+
+-- 10.2  What is the average installment amount, and how does it relate to loan repayment status?
+SELECT DISTINCT installment FROM bank_data ORDER BY installment DESC;
+
+SELECT 
+    CASE 
+        WHEN installment < 200 THEN '< 200'
+        WHEN installment BETWEEN 200 AND 400 THEN '200-400'
+        WHEN installment BETWEEN 400 AND 600 THEN '400-600'
+        WHEN installment BETWEEN 600 AND 800 THEN '600-800'
+        WHEN installment BETWEEN 800 AND 1000 THEN '800-1000'
+        WHEN installment > 1000 THEN '>1000'
+    END AS installment_level,
+    ROUND(COUNT(CASE WHEN loan_status IN ('Fully Paid', 'Current') THEN 1 END) * 100.0 / COUNT(*) , 2) AS good_loan_percentage,
+    ROUND(COUNT(CASE WHEN loan_status IN ('Charged Off', 'Defaulted') THEN 1 END) * 100.0 / COUNT(*), 2) AS bad_loan_percentage
+FROM bank_data
+GROUP BY installment_level
+ORDER BY installment_level;
+-- Lower monthly installments correlate with higher repayment success, while higher installments—especially between $800 and $1000—show increased repayment difficulties. 
+-- This suggests that lenders could potentially improve repayment rates by offering loan structures with smaller, more manageable installments.
+
+-- 10.3 What is the distribution of interest rates for good vs. bad loans?
+SELECT MIN(int_rate), MAX(int_rate) from bank_data;
+SELECT 
+CASE WHEN int_rate < 0.10 THEN "<10%" 
+	WHEN int_rate BETWEEN 0.10 AND 0.15 THEN "10% - 15%"
+    WHEN int_rate BETWEEN 0.15 AND 0.20 THEN "15% - 20%"
+    ELSE ">20%" 
+    END AS int_rate_levels,
+    ROUND(COUNT(CASE WHEN loan_status IN ('Fully Paid', 'Current') THEN 1 END) * 100.0 / COUNT(*) , 2) AS good_loan_percentage,
+    ROUND(COUNT(CASE WHEN loan_status IN ('Charged Off', 'Defaulted') THEN 1 END) * 100.0 / COUNT(*), 2) AS bad_loan_percentage
+FROM 
+bank_data
+GROUP BY int_rate_levels;
+-- Higher interest rates constitiute to inability to repay loans as the int_rate increases so does the failure to repay loans
+
 
