@@ -312,4 +312,18 @@ bank_data
 GROUP BY int_rate_levels;
 -- Higher interest rates constitiute to inability to repay loans as the int_rate increases so does the failure to repay loans
 
+-- 11. Verification Status Insights
+-- 11.1 How does the verification status of applications impact loan repayment success?
+SELECT verification_status, 
+ROUND(COUNT(CASE WHEN loan_status IN ('Fully Paid', 'Current') THEN 1 END) * 100.0 / COUNT(*) , 2) AS good_loan_percentage,
+ROUND(COUNT(CASE WHEN loan_status IN ('Charged Off', 'Defaulted') THEN 1 END) * 100.0 / COUNT(*), 2) AS bad_loan_percentage
+FROM bank_data
+GROUP BY verification_status;
+-- THis indicate that verification status alone is not a strong predictor of repayment success, 
+-- as Not Verified loans have a slightly better repayment success rate than Verified and Source Verified loans. 
 
+-- 11.2 What is the average loan amount and interest rate for verified vs. non-verified applications?
+SELECT verification_status, ROUND(AVG(loan_amount),2) as Average_loan_amount, ROUND(AVG(int_rate),2)*100 as Average_int_rate
+FROM bank_data
+GROUP BY verification_status
+ORDER BY Average_loan_amount;
