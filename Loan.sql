@@ -200,3 +200,35 @@ GROUP BY YEAR(last_payment_date)
 ORDER BY year;
 
 
+-- 8. Annual Income vs. Loan Amount:
+-- 8.1 What is the correlation between annual income and the average loan amount taken?
+SELECT 
+    FLOOR(annual_income / 100000) * 100000 AS income_range,
+    AVG(loan_amount) AS average_loan_amount
+FROM bank_data
+GROUP BY income_range
+ORDER BY income_range;
+
+SELECT @firstValue:=avg(annual_income) as mean1,
+	@secondValue:=avg(loan_amount) as mean2,
+    @division:=(stddev_samp(annual_income) * stddev_samp(loan_amount))  as std
+FROM bank_data;
+select ROUND ( sum( ( annual_income - @firstValue ) * (loan_amount - @secondValue) ) / ((count(annual_income) -1) * @division), 2 ) as correlation
+FROM bank_data;
+-- Not much correlaion between these columns that means higher or lower income doesn't effect the loan amount taken.
+
+-- 8.2 How many borrowers have taken loans higher than a set multiple of their annual income?
+SELECT
+CASE WHEN multiples >= 0.8 THEN "0.8x more than annual_income"
+	WHEN multiples >= 0.5 AND multiples < 0.8 THEN "0.5x more than annual_income"
+    ELSE "Less than 0.5x annual_income"
+    END as multiple_more_than_income,
+COUNT(*)
+FROM (
+SELECT loan_amount/annual_income as multiples from bank_data) as loan_multiples
+GROUP BY multiple_more_than_income;
+-- Most of the people take less than 50% of annual_income as loan_amount
+
+SELECT annual_income/loan_amount as multiples from bank_data;
+
+
