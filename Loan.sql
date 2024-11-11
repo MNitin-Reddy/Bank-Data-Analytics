@@ -229,6 +229,25 @@ SELECT loan_amount/annual_income as multiples from bank_data) as loan_multiples
 GROUP BY multiple_more_than_income;
 -- Most of the people take less than 50% of annual_income as loan_amount
 
--- 8.3 
-
+-- 8.3 How does income level impact loan repayment success (good vs. bad loans)?
+SELECT MIN(annual_income) as min , MAX(annual_income) as max from bank_data;
+SELECT annual_income from bank_data ORDER BY annual_income DESC;
+SELECT 
+    CASE 
+        WHEN annual_income < 30000 THEN '< 30k'
+        WHEN annual_income BETWEEN 30000 AND 60000 THEN '30k-60k'
+        WHEN annual_income BETWEEN 60001 AND 100000 THEN '60k-100k'
+        WHEN annual_income BETWEEN 100001 AND 150000 THEN '100k-150k'
+        WHEN annual_income BETWEEN 150001 AND 200000 THEN '150k-200k'
+        WHEN annual_income > 200000 THEN '> 200k'
+    END AS income_level,
+    ROUND(COUNT(CASE WHEN loan_status IN ('Fully Paid', 'Current') THEN 1 END) * 100.0 / COUNT(*) , 2) AS good_loan_percentage,
+    ROUND(COUNT(CASE WHEN loan_status IN ('Charged Off', 'Defaulted') THEN 1 END) * 100.0 / COUNT(*), 2) AS bad_loan_percentage
+FROM bank_data
+GROUP BY income_level
+ORDER BY income_level;
+-- Higher income levels are associated with better loan repayment success. 
+-- Borrowers earning over $200k have a high good loan percentage (89.79%), while those earning under $30k have a lower success rate (82.56%). 
+-- Mid-range income borrowers fall between these extremes. 
+-- This trend suggests that higher-income borrowers are more financially capable of timely repayments, while lower-income borrowers may benefit from flexible repayment options to improve loan outcomes.
 
