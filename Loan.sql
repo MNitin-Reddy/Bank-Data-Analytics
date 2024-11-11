@@ -229,6 +229,6 @@ SELECT loan_amount/annual_income as multiples from bank_data) as loan_multiples
 GROUP BY multiple_more_than_income;
 -- Most of the people take less than 50% of annual_income as loan_amount
 
-SELECT annual_income/loan_amount as multiples from bank_data;
+-- 8.3 
 
 
