@@ -1,60 +1,160 @@
 General Loan Insights:
 
 How many loan applications have been submitted overall?
-What is the total funded amount and the total amount received by the bank?
-What is the average interest rate and debt-to-income (DTI) ratio of all loan applications?
+38,576 applications
 
+What is the total funded amount and the total amount received by the bank?
+435.7571 Millions -> funded amount
+473 Million -> payment recieved
+
+What is the average interest rate and debt-to-income (DTI) ratio of all loan applications?
+Avg interest -> 12%
+Average DTI -> 13.3%
 
 Good vs. Bad Loans:
 
 What percentage of loan applications are considered good (paid on time or fully paid off)?
+86.1% of good loans
+
 What percentage of loan applications are considered bad (borrowers who failed to repay)?
+13.82%
+
 What is the total amount received from good loans compared to bad loans?
+Good loans -> 435.79 Million
+Bad loans -> 37.28 Million
+
 What is the trend in the repayment behavior over time for good vs. bad loans?
+An increasing trend of bad loans is seen over months with being the last three of the year with higher number of bad loans
 
 Regional Analysis:
 What are the total loan amounts disbursed in each state?
+CA , NY , TX , FL are the top states here
+
 Which state has the highest number of loan applications?
+CA has highest with 6894 followed by NY with 3701
+
 How do the rates of good and bad loans compare by state?
+ME	100.00	0.00      IA	100.00	0.00
+IN	100.00	0.00      WY	96.20	3.80
+DC	92.99	7.01      DE	90.00	10.00
+KS	90.00	10.00     MS	89.47	10.53
+AR	88.98	11.02     VT	88.89	11.11
+TX	88.70	11.30     AL	88.66	11.34
+PA	88.60	11.40     MA	88.55	11.45
+TN	88.24	11.76     CO	88.18	11.82
+WV	88.02	11.98     CT	87.95	12.05
+OH	87.88	12.12     LA	87.79	12.21
+VA	87.64	12.36     NY	87.35	12.65
+MT	87.34	12.66     RI	87.24	12.76
+IL	87.08	12.92     MN	86.82	13.18
+WI	86.77	13.23     AZ	86.43	13.57
+OK	86.35	13.65     KY	86.25	13.75
+SC	86.21	13.79     MI	85.99	14.01
+NC	85.77	14.23     NH	85.71	14.29
+WA	85.34	14.66     NJ	85.02	14.98
+MD	84.91	15.09     GA	84.72	15.28
+CA	84.67	15.33     UT	84.52	15.48
+OR	84.40	15.60     MO	84.24	15.76
+NM	84.15	15.85     HI	83.53	16.47
+ID	83.33	16.67     FL	82.73	17.27
+SD	82.54	17.46     AK	80.77	19.23
+NV	79.05	20.95     NE	40.00	60.00
+
 
 Monthly and Long-Term Analysis:
 What is the monthly trend in the number of loan applications submitted?
+Number of apllications increase over the months of year with highest in december
+
 How much money has been lent and received by the bank each month?
-How does the distribution of loan terms (e.g., 36-month vs. 60-month) impact repayment success?
+12 , 9, 8 months have highest
+
 
 Purpose-Based Analysis:
 What are the most common purposes for which loans are taken?
+Debt consolidation is the highest at 47.22
+Followed by credit card 12.29 and rest as follows
+other, home improvement, major purchase, small business, car, wedding,medical,moving,house,vacation,educational,renewable_energy
+
 How does the loan repayment success rate vary by purpose?
+wedding has the most success rate 90.73%, small business the least 74.38% others are evenly distributed between these values 
+
 Which loan purposes contribute the most to bad loans?
+Debt consolidation 49% and next others by 11%
 
 
 Home Ownership Analysis:
 
 How does home ownership status impact the likelihood of timely payments?
+Not a significant impact on loan repayment
+
 What percentage of loan applicants are homeowners, renters, or have a mortgage?
+RENT	18439	47.7991
+MORTGAGE	17198	44.5821
+OWN	2838	7.3569
+OTHER	98	0.2540
+NONE	3	0.0078
+
 How do the average loan amounts and repayment success differ by home ownership status?
+NONE	5.60	100.00
+MORTGAGE 12.75	87.03
+OWN	10.43	86.01
+RENT	10.07	85.43
+OTHER	10.66	81.63
 
 Loan Status Breakdown:
 
 How many loans have been paid off, are pending, or have been charged off?
-What are the repayment trends over the past year(s)?
-What is the proportion of late payments for different loan statuses?
-Annual Income vs. Loan Amount:
+Fully Paid	32145
+Charged Off	5333
+Current	        1098
 
+What are the repayment trends over the past year(s)?
+repayment_rate total_repayment_amount
+83.32901	473070933	2023
+
+
+Annual Income vs. Loan Amount:
 What is the correlation between annual income and the average loan amount taken?
+-- Not much correlaion between these columns that means higher or lower income doesn't effect the loan amount taken. around 0.2
+
 How many borrowers have taken loans higher than a set multiple of their annual income?
+Most of the people take less than 50% of annual_income as loan_amount
+
 How does income level impact loan repayment success (good vs. bad loans)?
+-- Higher income levels are associated with better loan repayment success. 
+-- Borrowers earning over $200k have a high good loan percentage (89.79%), while those earning under $30k have a lower success rate (82.56%). 
+-- Mid-range income borrowers fall between these extremes. 
+-- This trend suggests that higher-income borrowers are more financially capable of timely repayments, while lower-income borrowers may benefit from flexible repayment options to improve loan outcomes.
+
+
 Employment Analysis:
 
 What is the distribution of loan amounts by employment length?
-How does the repayment success rate vary by different job titles or employment lengths?
-What job sectors are most associated with good or bad loans?
-Interest Rate and Installment Analysis:
+There seems to be a positive correlation between emp_length and avgerage loan_amount taken
 
+How does the repayment success rate vary by different job titles or employment lengths?
+Similar trend for all the employment length ranges
+
+Interest Rate and Installment Analysis:
 What is the average interest rate and how does it differ by grade or sub-grade?
+-- Grade G has the highest interest rate of 21% and with lowest if 7.3%
+-- As the grade goes from A to G the interest rate increases by 2% through each level
+
 What is the average installment amount, and how does it relate to loan repayment status?
+-- Lower monthly installments correlate with higher repayment success, while higher installments—especially between $800 and $1000—show increased repayment difficulties. 
+-- This suggests that lenders could potentially improve repayment rates by offering loan structures with smaller, more manageable installments.
+
 What is the distribution of interest rates for good vs. bad loans?
+-- Higher interest rates constitiute to inability to repay loans as the int_rate increases so does the failure to repay loans
+
+
 Verification Status Insights:
 
 How does the verification status of applications impact loan repayment success?
+-- THis indicate that verification status alone is not a strong predictor of repayment success, 
+-- as Not Verified loans have a slightly better repayment success rate than Verified and Source Verified loans. 
+
 What is the average loan amount and interest rate for verified vs. non-verified applications?
+Not Verified	8485.02	        11
+Source Verified	10135.79	12
+Verified	15967.74	13

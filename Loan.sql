@@ -95,7 +95,8 @@ SELECT
 address_state,
 ROUND((Good_loan/(Good_loan+Bad_loan))*100,2) AS Good_loan_percentage,
 ROUND((Bad_loan/(Good_loan+Bad_loan))*100,2) AS Bad_loan_percentage
-FROM good_bad_loan;
+FROM good_bad_loan
+ORDER BY Good_loan_percentage DESC;
 
 -- 4. Monthly and Long-Term Analysis:
 -- Transforming issue_date column from text format to date
