@@ -160,7 +160,7 @@ FROM bank_data;
 ```
 * There is minimal correlation between annual income and the loan amount taken, indicating that the income level does not significantly influence the loan amount borrowed by applicants. Borrowers across various income levels tend to take similar loan amounts.
 
-**View full Analysis -> [Complete Analysis](Complete_Analysis.md)
+**View full Analysis ->** [Complete Analysis](Complete%20Analysis.md)
 
 
 ## Final Analysis
