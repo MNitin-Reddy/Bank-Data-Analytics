@@ -162,14 +162,17 @@ FROM bank_data;
 
 **View full Analysis ->** [Complete Analysis](Complete%20Analysis.md)
 
+## Tableau Dashboard
+
+![Dashboard](Tableau%20dashboard.png)
 
 ## Final Analysis
 
 This analysis provides a comprehensive view of the bank's lending activities, focusing on repayment trends, demographic influences, and loan characteristics that impact repayment success. Here’s a summary of the key findings:
 
 ### General Loan Insights:
-- A total of 38,576 loan applications were submitted, with a funded amount of $435.76M and total payments received by the bank amounting to $473M.
-- The average interest rate stands at 12%, with an average debt-to-income (DTI) ratio of 13.3%.
+A total of 38,576 loan applications were submitted, with a funded amount of $435.76M and total payments received by the bank amounting to $473M.
+The average interest rate is 12%, and the average debt-to-income (DTI) ratio is 13.3%.
 
 ### Good vs. Bad Loans:
 - Approximately 86.1% of loans were categorized as “good” (repaid on time), while 13.82% were “bad” (defaulted).
@@ -190,16 +193,16 @@ This analysis provides a comprehensive view of the bank's lending activities, fo
 - Renters represent 47.8% of applicants, followed by mortgage holders at 44.6%.
 
 ### Loan Status and Repayment Trends:
-- 32,145 loans have been fully paid, 5,333 charged off, and 1,098 are currently active.
+- 32,145 loans have been fully paid, 5,333 are charged off, and 1,098 are active.
 - Over the past year, the repayment rate stands at 83.33%, highlighting solid repayment trends in 2023.
 
 ### Annual Income vs. Loan Amount:
 - There is little correlation between annual income and loan amount, indicating that income alone does not dictate loan size.
-- Higher income borrowers show better repayment success; those earning over $200K have a 89.79% repayment success rate, compared to 82.56% for incomes under $30K.
+- Higher-income borrowers show better repayment success; those earning over $200K have an 89.79% repayment success rate, compared to 82.56% for incomes under $30K.
 
 ### Employment and Interest Rate Analysis:
 - Employment length correlates positively with loan amount; longer employment duration often reflects larger loans.
-- Lower monthly installments correspond with higher repayment success rates, while higher installments (especially $800–$1000) see more defaults.
+- Lower monthly installments correspond with higher repayment success rates, while higher instalments (especially $800–$1000) see more defaults.
 - Higher loan interest rates contribute to an increased likelihood of loan default.
 
 ### Verification Status:
@@ -208,8 +211,8 @@ This analysis provides a comprehensive view of the bank's lending activities, fo
 ## Recommendations:
 1. **Risk Mitigation Strategies**: Implement more stringent credit assessments, especially for debt consolidation loans, and tailor risk management strategies to high-risk states.
 2. **Targeted Offerings**: To reduce defaults, focus on high-income borrowers and regions with low default rates while offering more flexible terms for lower-income applicants.
-3. **Loan Purpose Adjustments**: Reevaluate the terms and conditions of debt consolidation loans to manage the associated risks better.
-4. **Regional Strategy**: Adapt loan offerings and repayment strategies to address region-specific financial climates, focusing on high-default states for enhanced risk modeling and management.
+3. **Loan Purpose Adjustments**: Reevaluate the terms and conditions of debt consolidation loans to better manage the associated risks.
+4. **Regional Strategy**: Adapt loan offerings and repayment strategies to address region-specific financial climates, focusing on high-default states for enhanced risk modelling and management.
 5. **Interest Rate Adjustments**: To further boost success rates, consider offering lower interest rates to borrowers with strong repayment histories.
 
 By refining these strategies, the bank can enhance its loan portfolio performance, reduce defaults, and drive long-term profitability.
