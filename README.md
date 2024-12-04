@@ -1,4 +1,4 @@
-# Bank Loan Repayment Analysis
+# Bank Loan Lending Analysis
 
 ## Problem Statement
 To analyze and understand the factors influencing loan repayment success, focusing on borrower demographics, loan characteristics, and payment behaviours to identify patterns in "good" vs. "bad" loans.
@@ -42,27 +42,9 @@ Here’s a breakdown of each column in the dataset:
 ## Tableau Dashboard
 Bank Lending Analysis Dashboard Live -> [Dashboard](https://public.tableau.com/views/LendingDashboard_17332189109360/Summary?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
-## Image Layout
-
-<div align="center">
-
-<table>
-  <tr>
-    <td>
-      <img src="BLA Dashboard 1.png" alt="BLA Dashboard 1" style="width: 100%;"/>
-    </td>
-    <td>
-      <img src="BLA Dashboard 2.png" alt="BLA Dashboard 2" style="width: 100%;"/>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center">
-      <img src="BLA Dashboard 3.png" alt="BLA Dashboard 3" style="width: 48%;"/>
-    </td>
-  </tr>
-</table>
-
-</div>
+![Dashboard1](BLA%20Dashboard%201.png)
+![Dashboard2](BLA%20Dashboard%202.png)
+![Dashboard3](BLA%20Dashboard%203.png)
 
 ## Most Impactful Analysis
 **How does income level impact loan repayment success (good vs. bad loans)?**
