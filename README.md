@@ -11,30 +11,21 @@ The primary need for this analysis is to enable banks and lending institutions t
 Data Structure and Columns
 Here’s a breakdown of each column in the dataset:
 
-* **id** - Unique identifier for each loan record.
-* **address_state** - The state where the borrower resides.
-* **application_type** - Type of loan application, indicating if it’s an individual or joint application.
-* **emp_length** - The number of years the borrower has been employed, indicating employment stability.
-* **emp_title** - Job title of the borrower, giving context to their profession.
-* **grade** - Internal grading system representing credit risk (e.g., A, B, C).
-* **home_ownership** - Home ownership status, such as renting, owning, or mortgaged, may influence repayment capability.
-* **issue_date** - Date when the loan was issued.
-* **last_credit_pull_date** - The date of the last credit report pulled for the borrower shows recent credit activity.
-* **last_payment_date** - Date of the borrower’s last payment, indicating recent payment behaviour.
-* **loan_status** - Current status of the loan (e.g., Fully Paid, Current, Charged Off).
-* **next_payment_date** - Date of the upcoming scheduled payment.
-* **member_id** - Unique ID for each borrower, allowing for tracking individual payment behaviour.
-* **purpose** - Purpose for which the loan was taken, such as debt consolidation or home improvement.
-* **sub_grade** - Further breakdown of the loan grade, giving finer risk detail (e.g., B1, B2).
-* **term** - Loan term length (e.g., 36 or 60 months).
-* **verification_status** - Indicates if borrower details, such as income, were verified.
-* **annual_income** - The borrower’s annual income, a measure of financial capacity.
-* **dti** - Debt-to-Income ratio, which shows how much of the income goes toward debt repayment.
-* **instalment** - Monthly instalment amount, showing the loan’s payment burden.
-* **int_rate** - Interest rate of the loan, indicating the cost of borrowing.
-* **loan_amount** - Original loan amount, reflecting the borrower’s requested amount.
-* **total_acc** - Total credit accounts of the borrower, providing credit history depth.
-* **total_payment** - Total amount paid by the borrower, indicating repayment progress.
+| **Field**                 | **Description**                                           | **Field**              | **Description**                                                |
+|---------------------------|-----------------------------------------------------------|------------------------|----------------------------------------------------------------|
+| **id**                    | Unique identifier for each loan record.                  | **address_state**      | The state where the borrower resides.                         |
+| **application_type**      | Type of loan application, indicating individual/joint.   | **emp_length**         | Number of years the borrower has been employed.               |
+| **emp_title**             | Job title of the borrower.                               | **grade**              | Internal grading system for credit risk (e.g., A, B, C).      |
+| **home_ownership**        | Home ownership status (e.g., renting, owning).           | **issue_date**         | Date when the loan was issued.                                |
+| **last_credit_pull_date** | Date of last credit report pulled.                       | **last_payment_date**  | Date of the borrower’s last payment.                         |
+| **loan_status**           | Current loan status (e.g., Fully Paid).           | **next_payment_date**  | Date of the upcoming scheduled payment.                      |
+| **member_id**             | Unique ID for each borrower.                             | **purpose**            | Purpose for the loan (e.g., debt consolidation).              |
+| **sub_grade**             | Breakdown of loan grade (e.g., B1, B2).                  | **term**               | Loan term length (e.g., 36 or 60 months).                    |
+| **verification_status**   | Indicates if borrower details were verified.             | **annual_income**      | Borrower’s annual income.                                     |
+| **dti**                   | Debt-to-Income ratio, showing debt repayment burden.     | **instalment**         | Monthly instalment amount.                                    |
+| **int_rate**              | Interest rate of the loan.                               | **loan_amount**        | Original loan amount requested.                               |
+| **total_acc**             | Total credit accounts of the borrower.                   | **total_payment**      | Total amount paid by the borrower.                           |
+
 ## Analysis to be performed
 * General Loan Insights
 * Good vs. Bad Loans
@@ -47,6 +38,9 @@ Here’s a breakdown of each column in the dataset:
 * Employment Analysis
 * Interest Rate and Installment Analysis
 * Verification Status Insights
+
+## Tableau Dashboard
+Bank Lending Analysis Dashboard Live -> [Dashboard](https://public.tableau.com/views/LendingDashboard_17332189109360/Summary?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 
 ## Most Impactful Analysis
@@ -162,14 +156,17 @@ FROM bank_data;
 
 **View full Analysis ->** [Complete Analysis](Complete%20Analysis.md)
 
+## Tableau Dashboard
+
+![Dashboard](Tableau%20dashboard.png)
 
 ## Final Analysis
 
 This analysis provides a comprehensive view of the bank's lending activities, focusing on repayment trends, demographic influences, and loan characteristics that impact repayment success. Here’s a summary of the key findings:
 
 ### General Loan Insights:
-- A total of 38,576 loan applications were submitted, with a funded amount of $435.76M and total payments received by the bank amounting to $473M.
-- The average interest rate stands at 12%, with an average debt-to-income (DTI) ratio of 13.3%.
+A total of 38,576 loan applications were submitted, with a funded amount of $435.76M and total payments received by the bank amounting to $473M.
+The average interest rate is 12%, and the average debt-to-income (DTI) ratio is 13.3%.
 
 ### Good vs. Bad Loans:
 - Approximately 86.1% of loans were categorized as “good” (repaid on time), while 13.82% were “bad” (defaulted).
@@ -190,16 +187,16 @@ This analysis provides a comprehensive view of the bank's lending activities, fo
 - Renters represent 47.8% of applicants, followed by mortgage holders at 44.6%.
 
 ### Loan Status and Repayment Trends:
-- 32,145 loans have been fully paid, 5,333 charged off, and 1,098 are currently active.
+- 32,145 loans have been fully paid, 5,333 are charged off, and 1,098 are active.
 - Over the past year, the repayment rate stands at 83.33%, highlighting solid repayment trends in 2023.
 
 ### Annual Income vs. Loan Amount:
 - There is little correlation between annual income and loan amount, indicating that income alone does not dictate loan size.
-- Higher income borrowers show better repayment success; those earning over $200K have a 89.79% repayment success rate, compared to 82.56% for incomes under $30K.
+- Higher-income borrowers show better repayment success; those earning over $200K have an 89.79% repayment success rate, compared to 82.56% for incomes under $30K.
 
 ### Employment and Interest Rate Analysis:
 - Employment length correlates positively with loan amount; longer employment duration often reflects larger loans.
-- Lower monthly installments correspond with higher repayment success rates, while higher installments (especially $800–$1000) see more defaults.
+- Lower monthly installments correspond with higher repayment success rates, while higher instalments (especially $800–$1000) see more defaults.
 - Higher loan interest rates contribute to an increased likelihood of loan default.
 
 ### Verification Status:
@@ -208,8 +205,8 @@ This analysis provides a comprehensive view of the bank's lending activities, fo
 ## Recommendations:
 1. **Risk Mitigation Strategies**: Implement more stringent credit assessments, especially for debt consolidation loans, and tailor risk management strategies to high-risk states.
 2. **Targeted Offerings**: To reduce defaults, focus on high-income borrowers and regions with low default rates while offering more flexible terms for lower-income applicants.
-3. **Loan Purpose Adjustments**: Reevaluate the terms and conditions of debt consolidation loans to manage the associated risks better.
-4. **Regional Strategy**: Adapt loan offerings and repayment strategies to address region-specific financial climates, focusing on high-default states for enhanced risk modeling and management.
+3. **Loan Purpose Adjustments**: Reevaluate the terms and conditions of debt consolidation loans to better manage the associated risks.
+4. **Regional Strategy**: Adapt loan offerings and repayment strategies to address region-specific financial climates, focusing on high-default states for enhanced risk modelling and management.
 5. **Interest Rate Adjustments**: To further boost success rates, consider offering lower interest rates to borrowers with strong repayment histories.
 
 By refining these strategies, the bank can enhance its loan portfolio performance, reduce defaults, and drive long-term profitability.
