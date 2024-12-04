@@ -42,6 +42,27 @@ Here’s a breakdown of each column in the dataset:
 ## Tableau Dashboard
 Bank Lending Analysis Dashboard Live -> [Dashboard](https://public.tableau.com/views/LendingDashboard_17332189109360/Summary?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
+## Image Layout
+
+<div align="center">
+
+<table>
+  <tr>
+    <td>
+      <img src="BLA Dashboard 1.png" alt="BLA Dashboard 1" style="width: 100%;"/>
+    </td>
+    <td>
+      <img src="BLA Dashboard 2.png" alt="BLA Dashboard 2" style="width: 100%;"/>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <img src="BLA Dashboard 3.png" alt="BLA Dashboard 3" style="width: 48%;"/>
+    </td>
+  </tr>
+</table>
+
+</div>
 
 ## Most Impactful Analysis
 **How does income level impact loan repayment success (good vs. bad loans)?**
@@ -155,10 +176,6 @@ FROM bank_data;
 * There is minimal correlation between annual income and the loan amount taken, indicating that the income level does not significantly influence the loan amount borrowed by applicants. Borrowers across various income levels tend to take similar loan amounts.
 
 **View full Analysis ->** [Complete Analysis](Complete%20Analysis.md)
-
-## Tableau Dashboard
-
-![Dashboard](Tableau%20dashboard.png)
 
 ## Final Analysis
 
